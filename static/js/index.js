@@ -19,6 +19,19 @@ function setActiveDemo(filter) {
   });
 }
 
+function buildYouTubeEmbedUrl(videoId, startTime = 0, autoplay = false) {
+  const url = new URL(`https://www.youtube.com/embed/${videoId}`);
+  url.searchParams.set('enablejsapi', '1');
+  url.searchParams.set('playsinline', '1');
+  url.searchParams.set('rel', '0');
+  if (startTime > 0) url.searchParams.set('start', String(Math.floor(startTime)));
+  if (autoplay) {
+    url.searchParams.set('autoplay', '1');
+    url.searchParams.set('mute', '1');
+  }
+  return url.toString();
+}
+
 function initStoryboards() {
   const modal = document.getElementById('storyboard-modal');
   const modalContent = modal?.querySelector('.storyboard-modal-content');
@@ -34,10 +47,8 @@ function initStoryboards() {
         target.play().catch(() => {});
       } else if (target instanceof HTMLIFrameElement && target.src.includes('youtube.com/embed/')) {
         const youtubeId = frame.dataset.youtubeId;
-        const url = new URL(youtubeId ? `https://www.youtube.com/embed/${youtubeId}` : target.src);
-        url.searchParams.set('start', String(Math.max(0, Math.floor(time))));
-        url.searchParams.set('autoplay', '1');
-        target.src = url.toString();
+        const videoId = youtubeId || target.src.split('/embed/')[1]?.split(/[?&]/)[0];
+        if (videoId) target.src = buildYouTubeEmbedUrl(videoId, Math.max(0, time), true);
       }
     });
 
