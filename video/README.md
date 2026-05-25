@@ -15,6 +15,17 @@ Expected local paths currently referenced by `index.html`:
 
 ## Unitree Go2
 
+The Go2 cards currently use YouTube embeds:
+
+- Demo 2: `https://www.youtube.com/watch?v=BMDZuOZbPXo`
+- Demo 4: `https://www.youtube.com/watch?v=ShsOVdGLqCc`
+- Demo 5: `https://www.youtube.com/watch?v=On_QMeI63hs`
+- Demo 6: `https://www.youtube.com/watch?v=MaaiBUubhFc`
+- Demo 8: `https://www.youtube.com/watch?v=aQS4WBPyqfg`
+- Demo 9: `https://www.youtube.com/watch?v=1XHkZBe3RMo`
+
+The older local Go2 paths are no longer referenced by the page:
+
 - `video/go/go2_002.mp4`
 - `video/go/go2_004.mp4`
 - `video/go/go2_005.mp4`
