@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="SAGE-NAV project page: learning BEV-grounded waypoint decisions from human demonstrations for object navigation.">
+  <meta name="keywords" content="SAGE-NAV, Object Navigation, Embodied AI, BEV, Human Demonstrations, Waypoint Navigation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAGE-NAV: Learning BEV-Grounded Waypoint Decisions from Human Demonstrations for Object Navigation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <script defer src="./static/js/index.js"></script>
+</head>
+
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#top"><strong>SAGE-NAV</strong></a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="#overview">Overview</a>
+        <a class="navbar-item" href="#demos">Demos</a>
+        <a class="navbar-item" href="#results">Results</a>
+        <a class="navbar-item" href="#bibtex">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero sage-hero" id="top">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        <h1 class="title is-2 publication-title">
+          SAGE-NAV: Learning BEV-Grounded Waypoint Decisions from Human Demonstrations for Object Navigation
+        </h1>
+
+        <div class="is-size-5 publication-authors">
+          <span class="author-block"><strong>Yuxin Cai</strong><sup>1,2,4</sup>,</span>
+          <span class="author-block"><strong>Zongtai Li</strong><sup>2</sup>,</span>
+          <span class="author-block"><strong>Maonan Wang</strong><sup>3</sup>,</span>
+          <span class="author-block"><strong>Muyi Bao</strong><sup>2</sup>,</span>
+          <span class="author-block"><strong>Haokun Zhu</strong><sup>2</sup>,</span>
+          <span class="author-block"><strong>Ding Zhao</strong><sup>2</sup>,</span>
+          <span class="author-block"><strong>Wenshan Wang</strong><sup>2</sup>,</span>
+          <span class="author-block"><strong>Wei-Yun Yau</strong><sup>4</sup>,</span>
+          <span class="author-block"><strong>Ji Zhang</strong><sup>2</sup>,</span>
+          <span class="author-block"><strong>Chen Lv</strong><sup>1</sup></span>
+        </div>
+
+        <div class="is-size-5 publication-authors" style="margin-top: 0.8rem;">
+          <span class="author-block"><sup>1</sup>Nanyang Technological University</span>
+          <span class="author-block"><sup>2</sup>Carnegie Mellon University</span>
+          <span class="author-block"><sup>3</sup>The Chinese University of Hong Kong</span>
+          <span class="author-block"><sup>4</sup>A*STAR Institute for Infocomm Research (I2R)</span>
+        </div>
+
+        <div class="publication-links">
+          <a class="button is-normal is-rounded is-dark" href="#" aria-label="Paper link coming soon">
+            <span>Paper</span>
+            <span>Coming Soon</span>
+          </a>
+          <a class="button is-normal is-rounded is-dark" href="#" aria-label="Code link coming soon">
+            <span>Code</span>
+            <span>Coming Soon</span>
+          </a>
+          <a class="button is-normal is-rounded" href="#demos">
+            <span>Watch Demos</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div class="teaser-video-shell">
+          <video id="teaser-video" controls muted playsinline preload="metadata">
+            <source src="./video/wheel/wheel_003.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-storyboard">
+          <div class="storyboard-title">
+            Key Moments
+            <span class="storyboard-subtitle">- Click image to jump &bull; Click 🔍 to zoom</span>
+          </div>
+          <div class="storyboard-frames">
+            <div class="storyboard-frame" data-target-video="teaser-video" data-time="8">
+              <div class="storyboard-image is-empty">
+                <span>Insert frame image</span>
+                <button class="storyboard-zoom" type="button" aria-label="Zoom key moment 1">🔍</button>
+              </div>
+              <span class="frame-time">0:08</span>
+              <div class="frame-description">Replace this with the first important navigation moment.</div>
+            </div>
+            <div class="storyboard-frame" data-target-video="teaser-video" data-time="22">
+              <div class="storyboard-image is-empty">
+                <span>Insert frame image</span>
+                <button class="storyboard-zoom" type="button" aria-label="Zoom key moment 2">🔍</button>
+              </div>
+              <span class="frame-time">0:22</span>
+              <div class="frame-description">Replace this with a frontier or waypoint decision moment.</div>
+            </div>
+            <div class="storyboard-frame" data-target-video="teaser-video" data-time="40">
+              <div class="storyboard-image is-empty">
+                <span>Insert frame image</span>
+                <button class="storyboard-zoom" type="button" aria-label="Zoom key moment 3">🔍</button>
+              </div>
+              <span class="frame-time">0:40</span>
+              <div class="frame-description">Replace this with a long-horizon navigation moment.</div>
+            </div>
+            <div class="storyboard-frame" data-target-video="teaser-video" data-time="58">
+              <div class="storyboard-image is-empty">
+                <span>Insert frame image</span>
+                <button class="storyboard-zoom" type="button" aria-label="Zoom key moment 4">🔍</button>
+              </div>
+              <span class="frame-time">0:58</span>
+              <div class="frame-description">Replace this with the target approach or success moment.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section overview-section" id="overview">
+    <div class="container">
+      <div class="section-heading has-text-centered">
+        <div class="section-kicker">Overview</div>
+        <h2 class="title is-3">From human demonstrations to BEV-grounded waypoint decisions.</h2>
+      </div>
+
+      <div class="overview-grid">
+        <div class="overview-card">
+          <span class="story-tag">Why</span>
+          <h3>Maps lose details, RGB policies lose space</h3>
+          <p>Map-based methods compress visual observations into sparse map labels, while RGB-only policies preserve appearance but struggle with long-horizon search.</p>
+        </div>
+        <div class="overview-card">
+          <span class="story-tag">How</span>
+          <h3>Frontier-collapse supervision</h3>
+          <p>Low-level human demonstrations are converted into high-level BEV waypoint labels, enabling imitation learning without oracle shortest-path supervision.</p>
+        </div>
+        <div class="overview-card">
+          <span class="story-tag">What</span>
+          <h3>Candidate-wise spatial-visual decisions</h3>
+          <p>Frontier and target candidates are compared in one BEV decision space while retaining candidate-specific visual memory and relative geometry.</p>
+        </div>
+      </div>
+
+      <figure class="method-figure">
+        <img src="./static/images/method-overview.svg" alt="SAGE-NAV method overview diagram">
+        <figcaption>
+          Frontier-collapse supervision turns human demonstrations into BEV waypoint labels; the policy then compares candidate frontiers and targets before issuing embodiment-agnostic waypoint commands.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="demos">
+    <div class="container">
+      <div class="section-heading has-text-centered">
+        <div class="section-kicker">Real-World Demos</div>
+        <h2 class="title is-3">One waypoint policy, multiple embodiments.</h2>
+      </div>
+
+      <div class="embodiment-grid" style="margin-bottom: 1.4rem;">
+        <div class="embodiment-card">
+          <h3>Wheeled Robot</h3>
+          <p>Executes SAGE-NAV waypoint decisions through a mobile base controller.</p>
+        </div>
+        <div class="embodiment-card">
+          <h3>Unitree Go2 Quadruped</h3>
+          <p>Uses the same high-level waypoint interface on a legged platform.</p>
+        </div>
+        <div class="embodiment-card">
+          <h3>Unitree G1 Humanoid</h3>
+          <p>Supported through the waypoint-level interface; add G1 clips here when available.</p>
+        </div>
+      </div>
+
+      <div class="demo-toolbar" aria-label="Demo filters">
+        <button class="filter-button" data-demo-filter="wheel">Wheeled</button>
+        <button class="filter-button" data-demo-filter="go2">Go2 Quadruped</button>
+        <button class="filter-button" data-demo-filter="human">Human / G1 Placeholder</button>
+        <button class="filter-button" data-demo-filter="all">All</button>
+      </div>
+
+      <div class="demo-grid">
+        <article class="demo-card" data-demo-kind="wheel">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/wheel/wheel_003.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Wheeled Robot</span>
+            <h3>Long-Horizon Indoor Search</h3>
+            <p><span class="highlight-waypoint">Waypoint-level decisions</span> guide the platform through extended indoor navigation while preserving a compact search state.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo-kind="wheel">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/wheel/wheel_004.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Wheeled Robot</span>
+            <h3>Frontier Selection</h3>
+            <p>The policy compares <span class="highlight-frontier">frontier candidates</span> before committing to the next navigable waypoint.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo-kind="wheel">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/wheel/wheel_006.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Wheeled Robot</span>
+            <h3>Visual Detail Retention</h3>
+            <p>Candidate-specific memory keeps <span class="highlight-target">target evidence</span> available instead of flattening it into sparse map labels.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo-kind="wheel">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/wheel/wheel_008.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Wheeled Robot</span>
+            <h3>Map-Aware Detour Avoidance</h3>
+            <p>BEV grounding helps the robot choose a shorter <span class="highlight-waypoint">waypoint route</span> when the target is not immediately visible.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo-kind="wheel">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/wheel/wheel_010.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Wheeled Robot</span>
+            <h3>Target-Directed Exploration</h3>
+            <p><span class="highlight-frontier">Frontier</span> and <span class="highlight-target">target</span> candidates are selected in a common BEV decision space.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo-kind="wheel">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/wheel/wheel_014.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Wheeled Robot</span>
+            <h3>Cross-Room Object Navigation</h3>
+            <p>The policy avoids oracle shortest paths while preserving <span class="highlight-waypoint">spatial search structure</span>.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo-kind="go2">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/go/go2_002.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Unitree Go2</span>
+            <h3>Quadruped Transfer</h3>
+            <p>The same <span class="highlight-transfer">high-level waypoint interface</span> transfers to a legged robot controller.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo-kind="go2">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/go/go2_004.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Unitree Go2</span>
+            <h3>Legged Frontier Search</h3>
+            <p>The Go2 platform follows selected <span class="highlight-frontier">frontier waypoints</span> while its low-level controller handles locomotion.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo-kind="go2">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/go/go2_005.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Unitree Go2</span>
+            <h3>Visual-Memory-Grounded Choice</h3>
+            <p>Candidate-specific visual memory preserves <span class="highlight-target">object cues</span> that map labels may lose.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo-kind="go2">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/go/go2_006.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Unitree Go2</span>
+            <h3>Embodiment-Robust Waypoints</h3>
+            <p>A single <span class="highlight-transfer">waypoint policy</span> can be executed through the quadruped navigation stack.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo-kind="go2">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/go/go2_008.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Unitree Go2</span>
+            <h3>Waypoint Search on Legged Hardware</h3>
+            <p><span class="highlight-waypoint">High-level decisions</span> remain stable while low-level locomotion is handled by the embodiment stack.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo-kind="go2">
+          <video controls muted playsinline preload="metadata">
+            <source src="./video/go/go2_009.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <span class="demo-meta">Unitree Go2</span>
+            <h3>Candidate Comparison</h3>
+            <p>The policy weighs <span class="highlight-frontier">exploration</span> against <span class="highlight-target">target evidence</span> before selecting a waypoint.</p>
+          </div>
+        </article>
+
+        <article class="demo-card demo-card-placeholder" data-demo-kind="human">
+          <div class="video-placeholder" data-video-slot="human">
+            <span class="demo-meta">Human / Unitree G1</span>
+            <h3>Reserved Walking Demo Slot 1</h3>
+            <p>Add your human or humanoid walking video here when it is ready.</p>
+            <code>&lt;video controls&gt;&lt;source src='./video/human/your_clip.mp4'&gt;&lt;/video&gt;</code>
+          </div>
+          <div class="demo-card-body">
+            <span class="demo-meta">Placeholder</span>
+            <h3>Human-Compatible Waypoint Interface</h3>
+            <p>Replace this slot with a clip showing <span class="highlight-transfer">policy transfer</span> to human-scale locomotion.</p>
+          </div>
+        </article>
+
+        <article class="demo-card demo-card-placeholder" data-demo-kind="human">
+          <div class="video-placeholder" data-video-slot="human">
+            <span class="demo-meta">Human / Unitree G1</span>
+            <h3>Reserved Walking Demo Slot 2</h3>
+            <p>Drop in another human or G1 walking sequence.</p>
+            <code>&lt;video controls&gt;&lt;source src='./video/human/your_clip_02.mp4'&gt;&lt;/video&gt;</code>
+          </div>
+          <div class="demo-card-body">
+            <span class="demo-meta">Placeholder</span>
+            <h3>Waypoint Execution</h3>
+            <p>Use this caption to highlight how <span class="highlight-waypoint">waypoint commands</span> are executed by the body controller.</p>
+          </div>
+        </article>
+
+        <article class="demo-card demo-card-placeholder" data-demo-kind="human">
+          <div class="video-placeholder" data-video-slot="human">
+            <span class="demo-meta">Human / Unitree G1</span>
+            <h3>Reserved Walking Demo Slot 3</h3>
+            <p>Keep this slot for long corridor or room transition footage.</p>
+            <code>&lt;video controls&gt;&lt;source src='./video/human/your_clip_03.mp4'&gt;&lt;/video&gt;</code>
+          </div>
+          <div class="demo-card-body">
+            <span class="demo-meta">Placeholder</span>
+            <h3>Long-Range Search</h3>
+            <p>Use this card for a <span class="highlight-frontier">frontier-driven</span> transition before the target becomes visible.</p>
+          </div>
+        </article>
+
+        <article class="demo-card demo-card-placeholder" data-demo-kind="human">
+          <div class="video-placeholder" data-video-slot="human">
+            <span class="demo-meta">Human / Unitree G1</span>
+            <h3>Reserved Walking Demo Slot 4</h3>
+            <p>Add footage where visual memory changes the decision.</p>
+            <code>&lt;video controls&gt;&lt;source src='./video/human/your_clip_04.mp4'&gt;&lt;/video&gt;</code>
+          </div>
+          <div class="demo-card-body">
+            <span class="demo-meta">Placeholder</span>
+            <h3>Visual Candidate Memory</h3>
+            <p>Highlight a frame where <span class="highlight-target">object evidence</span> is preserved for a later decision.</p>
+          </div>
+        </article>
+
+        <article class="demo-card demo-card-placeholder" data-demo-kind="human">
+          <div class="video-placeholder" data-video-slot="human">
+            <span class="demo-meta">Human / Unitree G1</span>
+            <h3>Reserved Walking Demo Slot 5</h3>
+            <p>Reserve this for an embodiment comparison clip.</p>
+            <code>&lt;video controls&gt;&lt;source src='./video/human/your_clip_05.mp4'&gt;&lt;/video&gt;</code>
+          </div>
+          <div class="demo-card-body">
+            <span class="demo-meta">Placeholder</span>
+            <h3>Cross-Embodiment Consistency</h3>
+            <p>Show that the same <span class="highlight-transfer">high-level interface</span> can serve different robots.</p>
+          </div>
+        </article>
+
+        <article class="demo-card demo-card-placeholder" data-demo-kind="human">
+          <div class="video-placeholder" data-video-slot="human">
+            <span class="demo-meta">Human / Unitree G1</span>
+            <h3>Reserved Walking Demo Slot 6</h3>
+            <p>Use this final slot for a success or target-arrival sequence.</p>
+            <code>&lt;video controls&gt;&lt;source src='./video/human/your_clip_06.mp4'&gt;&lt;/video&gt;</code>
+          </div>
+          <div class="demo-card-body">
+            <span class="demo-meta">Placeholder</span>
+            <h3>Target Arrival</h3>
+            <p>Mark the final <span class="highlight-target">target approach</span> or task completion moment here.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="storyboard-modal" id="storyboard-modal" aria-hidden="true">
+    <button class="storyboard-modal-close" type="button" aria-label="Close zoomed key moment">×</button>
+    <div class="storyboard-modal-content">
+      <img id="storyboard-modal-image" alt="Zoomed key moment">
+      <div class="storyboard-modal-fallback">Add an image to this key moment to enable zoom preview.</div>
+    </div>
+  </div>
+
+  <section class="section hero is-light" id="results">
+    <div class="container">
+      <div class="section-heading has-text-centered">
+        <div class="section-kicker">Benchmark Results</div>
+        <h2 class="title is-3">Detailed comparison across training regimes and datasets.</h2>
+      </div>
+
+      <div class="paper-table result-table-shell">
+        <p class="result-caption">
+          Results are reported on MP3D-Val, HM3D (v0.1), and HM3D (v0.2) for fair comparison with prior work.
+        </p>
+        <div class="table-container">
+          <table class="table result-table" data-result-table="full">
+            <thead>
+              <tr>
+                <th rowspan="2">Method</th>
+                <th rowspan="2">Training Regime</th>
+                <th colspan="2">MP3D-Val</th>
+                <th colspan="2">HM3D (v0.1)</th>
+                <th colspan="2">HM3D (v0.2)</th>
+              </tr>
+              <tr>
+                <th>SR (%) &uarr;</th>
+                <th>SPL (%) &uarr;</th>
+                <th>SR (%) &uarr;</th>
+                <th>SPL (%) &uarr;</th>
+                <th>SR (%) &uarr;</th>
+                <th>SPL (%) &uarr;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="result-group-row">
+                <td colspan="8">Training-free methods</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>VLFM</td>
+                <td>Training-free</td>
+                <td>36.4</td><td>17.5</td>
+                <td>52.5</td><td>30.4</td>
+                <td>63.5</td><td>32.5</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>SG-Nav-GPT</td>
+                <td>Training-free</td>
+                <td>40.2</td><td>16.0</td>
+                <td>54.0</td><td>24.9</td>
+                <td>49.6</td><td>25.5</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>OpenFMNav</td>
+                <td>Training-free</td>
+                <td>37.2</td><td>15.7</td>
+                <td>54.9</td><td>24.4</td>
+                <td class="missing">-</td><td class="missing">-</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>TriHelper</td>
+                <td>Training-free</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td>56.5</td><td>25.3</td>
+                <td class="missing">-</td><td class="missing">-</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>BeliefMapNav</td>
+                <td>Training-free</td>
+                <td>37.3</td><td>17.6</td>
+                <td>61.4</td><td>30.4</td>
+                <td class="missing">-</td><td class="missing">-</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>ApexNav</td>
+                <td>Training-free</td>
+                <td>39.2</td><td>17.8</td>
+                <td>59.6</td><td>33.0</td>
+                <td>76.2</td><td>38.0</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>WMNav</td>
+                <td>Training-free</td>
+                <td>45.4</td><td>17.2</td>
+                <td>58.1</td><td>31.2</td>
+                <td>72.2</td><td>33.3</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>PIGEON</td>
+                <td>Training-free</td>
+                <td>41.6</td><td>14.4</td>
+                <td>57.9</td><td>32.3</td>
+                <td>79.2</td><td>36.8</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>STRIVE</td>
+                <td>Training-free</td>
+                <td>52.3</td><td class="best-result">23.1</td>
+                <td>62.9</td><td>34.2</td>
+                <td>79.6</td><td class="best-result">38.7</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>SysNav</td>
+                <td>Training-free</td>
+                <td>50.7</td><td>18.1</td>
+                <td>63.7</td><td>30.5</td>
+                <td>80.8</td><td>37.2</td>
+              </tr>
+
+              <tr class="result-group-row">
+                <td colspan="8">Learning-based methods</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>DD-PPO</td>
+                <td>RL</td>
+                <td>21.6</td><td>8.7</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td>27.9</td><td>14.2</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>Habitat-Web</td>
+                <td>Supervised</td>
+                <td>14.6*</td><td>4.94*</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td class="missing">-</td><td class="missing">-</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>ZSON</td>
+                <td>Supervised</td>
+                <td>15.3</td><td>4.8</td>
+                <td>25.5</td><td>12.6</td>
+                <td class="missing">-</td><td class="missing">-</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>Navid</td>
+                <td>Supervised</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td>32.5</td><td>21.6</td>
+                <td class="missing">-</td><td class="missing">-</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>PixNav</td>
+                <td>Supervised</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td>37.9</td><td>20.5</td>
+                <td class="missing">-</td><td class="missing">-</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>ESC</td>
+                <td>Supervised</td>
+                <td>28.7</td><td>14.2</td>
+                <td>39.2</td><td>22.3</td>
+                <td class="missing">-</td><td class="missing">-</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>PONI</td>
+                <td>Supervised</td>
+                <td>31.8</td><td>12.1</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td class="missing">-</td><td class="missing">-</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>SemExp</td>
+                <td>Supervised</td>
+                <td>36.0</td><td>14.4</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td class="missing">-</td><td class="missing">-</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>CompassNav</td>
+                <td>Supervised</td>
+                <td>42.0</td><td>17.5</td>
+                <td>56.6</td><td>27.6</td>
+                <td class="missing">-</td><td class="missing">-</td>
+              </tr>
+
+              <tr class="result-group-row">
+                <td colspan="8">Generic policies</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>UniGoal</td>
+                <td>Generic</td>
+                <td>41.0</td><td>16.4</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td>54.5</td><td>25.1</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>Uni-Navid</td>
+                <td>Generic</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td>73.7</td><td>37.1</td>
+              </tr>
+              <tr class="result-method-row">
+                <td>OmniNav</td>
+                <td>Generic</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td class="missing">-</td><td class="missing">-</td>
+                <td>56.1</td><td>30.0</td>
+              </tr>
+
+              <tr class="result-group-row result-ours-divider">
+                <td colspan="8">Ours</td>
+              </tr>
+              <tr class="result-method-row result-ours-row">
+                <td>SAGE-Nav (Ours)</td>
+                <td>Supervised</td>
+                <td class="best-result">53.8</td><td class="best-result">23.1</td>
+                <td class="best-result">70.5</td><td class="best-result">34.6</td>
+                <td class="best-result">82.2</td><td>38.5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light" id="bibtex">
+    <div class="container">
+      <div class="section-heading has-text-centered">
+        <div class="section-kicker">Citation</div>
+        <h2 class="title is-3">BibTeX</h2>
+      </div>
+      <pre class="bibtex-box"><code>@inproceedings{cai2026sagenav,
+  title     = {SAGE-NAV: Learning BEV-Grounded Waypoint Decisions from Human Demonstrations for Object Navigation},
+  author    = {Cai, Yuxin and Li, Zongtai and Wang, Maonan and Bao, Muyi and Zhu, Haokun and Zhao, Ding and Wang, Wenshan and Yau, Wei-Yun and Zhang, Ji and Lv, Chen},
+  booktitle = {Conference on Robot Learning (CoRL)},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>This website is adapted from the CMU-VLN project page structure.</p>
+    </div>
+  </footer>
+</body>
+</html>
