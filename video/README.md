@@ -2,9 +2,24 @@
 
 Video files are not uploaded to GitHub yet. The website keeps graceful placeholders when the media files are missing.
 
-Expected local paths currently referenced by `index.html`:
+The page now uses YouTube embeds for the main wheeled video, wheeled demo cards, and Go2 demo cards.
 
 ## Main / Wheeled Robot
+
+The main teaser uses:
+
+- Demo 3: `https://www.youtube.com/watch?v=52SD8ijt36c`
+
+The wheeled cards currently use:
+
+- Demo 4: `https://www.youtube.com/watch?v=svC7fRQ2as0`
+- Demo 14: `https://www.youtube.com/watch?v=hU_ByQniFxA`
+- Demo 13: `https://www.youtube.com/watch?v=eWaxmcOjyBM`
+- Demo 10: `https://www.youtube.com/watch?v=nz_TN7HV-sA`
+- Demo 8: `https://www.youtube.com/watch?v=34ikeZQOTw4`
+- Demo 6: `https://www.youtube.com/watch?v=wVQjJYpGf5k`
+
+The older local wheeled paths are no longer referenced by the page:
 
 - `video/wheel/wheel_003.mp4`
 - `video/wheel/wheel_004.mp4`

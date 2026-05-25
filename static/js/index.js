@@ -27,11 +27,16 @@ function initStoryboards() {
 
   document.querySelectorAll('.storyboard-frame').forEach((frame) => {
     frame.addEventListener('click', () => {
-      const video = document.getElementById(frame.dataset.targetVideo);
+      const target = document.getElementById(frame.dataset.targetVideo);
       const time = Number(frame.dataset.time || 0);
-      if (video) {
-        video.currentTime = time;
-        video.play().catch(() => {});
+      if (target instanceof HTMLVideoElement) {
+        target.currentTime = time;
+        target.play().catch(() => {});
+      } else if (target instanceof HTMLIFrameElement && target.src.includes('youtube.com/embed/')) {
+        const url = new URL(target.src);
+        url.searchParams.set('start', String(Math.max(0, Math.floor(time))));
+        url.searchParams.set('autoplay', '1');
+        target.src = url.toString();
       }
     });
 

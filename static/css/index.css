@@ -50,7 +50,9 @@ body {
   box-shadow: 0 22px 55px rgba(15, 23, 42, 0.24);
 }
 
-.teaser-video-shell video {
+.teaser-video-shell video,
+.teaser-video-shell iframe {
+  border: 0;
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
