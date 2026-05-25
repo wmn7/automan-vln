@@ -2,13 +2,15 @@
 
 Video files are not uploaded to GitHub yet. The website keeps graceful placeholders when the media files are missing.
 
-The page now uses YouTube embeds for the main wheeled video, wheeled demo cards, and Go2 demo cards.
+The page now uses YouTube embeds for the main human/G1 video, wheeled demo cards, Go2 demo cards, and the first two Human/G1 demo cards.
 
-## Main / Wheeled Robot
+## Main / Human G1
 
 The main teaser uses:
 
-- Demo 3: `https://www.youtube.com/watch?v=52SD8ijt36c`
+- Demo 1: `https://www.youtube.com/watch?v=MS10ASQFA18`
+
+## Wheeled Robot
 
 The wheeled cards currently use:
 
@@ -48,6 +50,11 @@ The older local Go2 paths are no longer referenced by the page:
 - `video/go/go2_008.mp4`
 - `video/go/go2_009.mp4`
 
-## Human / G1 Slots
+## Human / G1
 
-Human and G1 demo cards currently use placeholder blocks. Add clips under `video/human/` or another final media path, then update the corresponding cards in `index.html`.
+The first two Human/G1 cards currently use YouTube embeds:
+
+- Demo 1: `https://www.youtube.com/watch?v=MS10ASQFA18`
+- Demo 2: `https://www.youtube.com/watch?v=zw50ubyonVA`
+
+The remaining Human/G1 cards are still reserved placeholders.
