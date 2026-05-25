@@ -33,7 +33,8 @@ function initStoryboards() {
         target.currentTime = time;
         target.play().catch(() => {});
       } else if (target instanceof HTMLIFrameElement && target.src.includes('youtube.com/embed/')) {
-        const url = new URL(target.src);
+        const youtubeId = frame.dataset.youtubeId;
+        const url = new URL(youtubeId ? `https://www.youtube.com/embed/${youtubeId}` : target.src);
         url.searchParams.set('start', String(Math.max(0, Math.floor(time))));
         url.searchParams.set('autoplay', '1');
         target.src = url.toString();
