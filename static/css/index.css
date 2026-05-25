@@ -22,19 +22,6 @@ body {
   margin-right: auto;
 }
 
-.publication-authors {
-  font-family: "Google Sans", "Noto Sans", sans-serif;
-}
-
-.publication-authors a {
-  color: #2f6f73 !important;
-}
-
-.author-block {
-  display: inline-block;
-  margin: 0 0.15rem;
-}
-
 .publication-links {
   display: flex;
   flex-wrap: wrap;
@@ -503,25 +490,6 @@ body {
 .highlight-transfer {
   background: rgba(30, 64, 175, 0.1);
   color: #1e40af;
-}
-
-.bibtex-box {
-  background: #111827;
-  border-radius: 8px;
-  color: #e5e7eb;
-  font-size: 0.92rem;
-  margin: 0 auto;
-  max-width: 900px;
-  overflow-x: auto;
-  padding: 1.25rem;
-  text-align: left;
-}
-
-.bibtex-box code {
-  background: transparent;
-  color: inherit;
-  padding: 0;
-  white-space: pre;
 }
 
 .storyboard-modal {
