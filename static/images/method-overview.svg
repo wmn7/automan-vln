@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 430" role="img" aria-labelledby="title desc">
-  <title id="title">SAGE-NAV Method Overview Placeholder</title>
+  <title id="title">IntentNav Method Overview</title>
   <desc id="desc">A horizontal overview showing human demonstrations transformed into frontier-collapse supervision, candidate-wise BEV grounded decisions, and transferable waypoint commands.</desc>
   <defs>
     <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">

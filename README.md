@@ -1,8 +1,8 @@
-# SAGE-NAV Project Page
+# IntentNav Project Page
 
 Static project page for:
 
-**SAGE-NAV: Learning BEV-Grounded Waypoint Decisions from Human Demonstrations for Object Navigation**
+**IntentNav: Learning Spatial-Visual Object Navigation from Human Demonstrations**
 
 ## Upload Notes
 

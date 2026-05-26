@@ -22,7 +22,7 @@ body {
   margin-right: auto;
 }
 
-.sage-hero .hero-body {
+.intent-hero .hero-body {
   padding-bottom: 1rem;
   padding-top: 1.6rem;
 }
@@ -35,7 +35,7 @@ body {
   margin-top: 0.7rem;
 }
 
-.sage-hero {
+.intent-hero {
   background:
     linear-gradient(135deg, rgba(251, 250, 247, 0.94) 0%, rgba(245, 241, 233, 0.8) 58%, rgba(229, 236, 230, 0.92) 100%);
   border-bottom: 1px solid rgba(38, 50, 56, 0.08);
@@ -598,7 +598,7 @@ body {
 }
 
 @media screen and (min-width: 769px) and (max-height: 780px) {
-  .sage-hero .hero-body {
+  .intent-hero .hero-body {
     padding-bottom: 0.55rem;
     padding-top: 1rem;
   }
