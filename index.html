@@ -216,7 +216,7 @@
           <div class="demo-card-body">
             <span class="demo-meta">Wheeled Robot</span>
             <h3>Long-Horizon Indoor Search</h3>
-            <p><span class="highlight-waypoint">Waypoint-level decisions</span> guide the platform through extended indoor navigation while preserving a compact search state.</p>
+            <p>Within a relatively short path, the robot sweeps an unknown room almost in a full loop, achieving broad <span class="highlight-waypoint">spatial coverage</span> of the space before moving on.</p>
           </div>
         </article>
 
@@ -226,8 +226,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Wheeled Robot</span>
-            <h3>Frontier Selection</h3>
-            <p>The policy compares <span class="highlight-frontier">frontier candidates</span> before committing to the next navigable waypoint.</p>
+            <h3>Local Scanning</h3>
+            <p>At an informative viewpoint the robot <span class="highlight-frontier">scans in place</span>, rotating to take in its surroundings and gather visual evidence before deciding where to search next.</p>
           </div>
         </article>
 
@@ -237,8 +237,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Wheeled Robot</span>
-            <h3>Visual Detail Retention</h3>
-            <p>Candidate-specific memory keeps <span class="highlight-target">target evidence</span> available instead of flattening it into sparse map labels.</p>
+            <h3>Probe, Back Out, Commit</h3>
+            <p>A V-shaped <span class="highlight-frontier">peeking</span> motion &mdash; walking into a region, finding nothing, and backing out &mdash; before <span class="highlight-target">semantic evidence</span> of the target appears and the robot commits toward it.</p>
           </div>
         </article>
 
@@ -248,8 +248,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Wheeled Robot</span>
-            <h3>Map-Aware Detour Avoidance</h3>
-            <p>BEV grounding helps the robot choose a shorter <span class="highlight-waypoint">waypoint route</span> when the target is not immediately visible.</p>
+            <h3>Semantic Common Sense</h3>
+            <p>The open space clearly holds no instance of the target, so the policy skips it and heads straight to another room where the object is <span class="highlight-target">semantically more likely</span> to be found.</p>
           </div>
         </article>
 
@@ -259,8 +259,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Wheeled Robot</span>
-            <h3>Target-Directed Exploration</h3>
-            <p><span class="highlight-frontier">Frontier</span> and <span class="highlight-target">target</span> candidates are selected in a common BEV decision space.</p>
+            <h3>Unified Exploration &amp; Commitment</h3>
+            <p><span class="highlight-frontier">Frontier</span> exploration and <span class="highlight-target">target</span> commitment are unified in one BEV decision space, so the robot keeps searching and switches to decisive approach the moment the target is verified.</p>
           </div>
         </article>
 
@@ -271,7 +271,7 @@
           <div class="demo-card-body">
             <span class="demo-meta">Wheeled Robot</span>
             <h3>Cross-Room Object Navigation</h3>
-            <p>The policy avoids oracle shortest paths while preserving <span class="highlight-waypoint">spatial search structure</span>.</p>
+            <p>Carrying its BEV spatial memory across doorways, the robot searches <span class="highlight-waypoint">room to room</span> until the target appears.</p>
           </div>
         </article>
 
@@ -281,8 +281,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Unitree Go2</span>
-            <h3>Quadruped Transfer</h3>
-            <p>The same <span class="highlight-transfer">high-level waypoint interface</span> transfers to a legged robot controller.</p>
+            <h3>Zero-Shot Quadruped Transfer</h3>
+            <p>The same MP3D-trained checkpoint drives the Go2 with <span class="highlight-transfer">no VLM fine-tuning</span> &mdash; only the candidate-level BEV waypoint interface, while platform-specific local control handles legged locomotion.</p>
           </div>
         </article>
 
@@ -292,8 +292,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Unitree Go2</span>
-            <h3>Legged Frontier Search</h3>
-            <p>The Go2 platform follows selected <span class="highlight-frontier">frontier waypoints</span> while its low-level controller handles locomotion.</p>
+            <h3>Compact 2B, Onboard</h3>
+            <p>IntentNav is a compact <span class="highlight-transfer">2B VLM</span> (InternVL3-2B) that runs on a single onboard laptop GPU at roughly 0.8&nbsp;s per decision &mdash; light enough for real-time legged deployment.</p>
           </div>
         </article>
 
@@ -303,8 +303,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Unitree Go2</span>
-            <h3>Visual-Memory-Grounded Choice</h3>
-            <p>Candidate-specific visual memory preserves <span class="highlight-target">object cues</span> that map labels may lose.</p>
+            <h3>Very Long-Horizon Exploration</h3>
+            <p>A single extended episode: the quadruped explores a large space over a <span class="highlight-waypoint">very long horizon</span>, sustaining coherent directed search without collapsing into repetitive backtracking.</p>
           </div>
         </article>
 
@@ -314,8 +314,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Unitree Go2</span>
-            <h3>Embodiment-Robust Waypoints</h3>
-            <p>A single <span class="highlight-transfer">waypoint policy</span> can be executed through the quadruped navigation stack.</p>
+            <h3>Embodiment-Agnostic Interface</h3>
+            <p>Decoupling high-level candidate selection from low-level control lets the <span class="highlight-transfer">identical waypoint policy</span> run on legged hardware exactly as it does on wheels.</p>
           </div>
         </article>
 
@@ -325,8 +325,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Unitree Go2</span>
-            <h3>Waypoint Search on Legged Hardware</h3>
-            <p><span class="highlight-waypoint">High-level decisions</span> remain stable while low-level locomotion is handled by the embodiment stack.</p>
+            <h3>What Is a Candidate?</h3>
+            <p>Each decision is a choice among <span class="highlight-frontier">frontier candidates</span> on the boundary of explored and unknown space, plus <span class="highlight-target">target candidates</span> from verified detections &mdash; all compared in one BEV space.</p>
           </div>
         </article>
 
@@ -336,8 +336,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Unitree Go2</span>
-            <h3>Candidate Comparison</h3>
-            <p>The policy weighs <span class="highlight-frontier">exploration</span> against <span class="highlight-target">target evidence</span> before selecting a waypoint.</p>
+            <h3>Low-Frequency Querying</h3>
+            <p>Instead of repeated VLM calls, the policy predicts a <span class="highlight-waypoint">candidate-ID</span> only as the robot nears its waypoint, so 2B inference overlaps with motion and never pauses the robot.</p>
           </div>
         </article>
 
@@ -347,8 +347,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Human / Unitree G1</span>
-            <h3>Human-Compatible Waypoint Interface</h3>
-            <p>The same <span class="highlight-transfer">waypoint-level interface</span> transfers to human-scale locomotion.</p>
+            <h3>Zero-Shot Humanoid Transfer</h3>
+            <p>The hardest embodiment gap: the same MP3D-trained checkpoint drives a <span class="highlight-transfer">bipedal humanoid</span> with no VLM fine-tuning, through the same candidate-level BEV waypoint interface.</p>
           </div>
         </article>
 
@@ -358,8 +358,8 @@
           </div>
           <div class="demo-card-body">
             <span class="demo-meta">Human / Unitree G1</span>
-            <h3>Waypoint Execution</h3>
-            <p><span class="highlight-waypoint">Waypoint commands</span> are executed through the body controller while the high-level policy remains unchanged.</p>
+            <h3>Decisive Target Commitment</h3>
+            <p>Once the target is verified, the humanoid stops exploring and walks <span class="highlight-target">straight to the object</span> &mdash; the high-level policy is unchanged while the body controller executes each waypoint.</p>
           </div>
         </article>
       </div>
