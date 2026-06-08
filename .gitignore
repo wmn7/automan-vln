@@ -17,3 +17,5 @@ dist/
 # Keep uploadable placeholders and notes inside the video tree.
 !/video/README.md
 !/video/**/.gitkeep
+
+paper_latex/

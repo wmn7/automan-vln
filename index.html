@@ -27,6 +27,7 @@
     <div class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="#overview">Overview</a>
+        <a class="navbar-item" href="#approach">Approach</a>
         <a class="navbar-item" href="#demos">Demos</a>
         <a class="navbar-item" href="#results">Results</a>
       </div>
@@ -72,35 +73,27 @@
           <div class="storyboard-frames">
             <div class="storyboard-frame" data-target-video="teaser-video" data-youtube-id="MS10ASQFA18" data-time="8">
               <div class="storyboard-image">
-                <img src="https://img.youtube.com/vi/MS10ASQFA18/1.jpg" alt="Human G1 demo initial observation">
+                <img src="https://img.youtube.com/vi/MS10ASQFA18/1.jpg" alt="Geometry-aware cubicle-by-cubicle search">
                 <button class="storyboard-zoom" type="button" aria-label="Zoom key moment 1">🔍</button>
               </div>
               <span class="frame-time">0:08</span>
-              <div class="frame-description">Initial observation establishes the local search context.</div>
+              <div class="frame-description">Geometry-aware search: the agent probes each small region one by one, human-like &mdash; glancing into a cubicle and moving on without exhaustively clearing it.</div>
             </div>
-            <div class="storyboard-frame" data-target-video="teaser-video" data-youtube-id="MS10ASQFA18" data-time="22">
+            <div class="storyboard-frame" data-target-video="teaser-video" data-youtube-id="MS10ASQFA18" data-time="16">
               <div class="storyboard-image">
-                <img src="https://img.youtube.com/vi/MS10ASQFA18/2.jpg" alt="Human G1 demo exploration decision">
+                <img src="https://img.youtube.com/vi/MS10ASQFA18/2.jpg" alt="Looking around to avoid redundant revisits">
                 <button class="storyboard-zoom" type="button" aria-label="Zoom key moment 2">🔍</button>
               </div>
-              <span class="frame-time">0:22</span>
-              <div class="frame-description">The policy evaluates candidate frontiers before committing.</div>
+              <span class="frame-time">0:16</span>
+              <div class="frame-description">Active looking-around behavior tracks what has been seen, avoiding redundant revisits to the same regions.</div>
             </div>
-            <div class="storyboard-frame" data-target-video="teaser-video" data-youtube-id="MS10ASQFA18" data-time="40">
+            <div class="storyboard-frame" data-target-video="teaser-video" data-youtube-id="MS10ASQFA18" data-time="24">
               <div class="storyboard-image">
-                <img src="https://img.youtube.com/vi/MS10ASQFA18/3.jpg" alt="Human G1 demo waypoint execution">
+                <img src="https://img.youtube.com/vi/MS10ASQFA18/3.jpg" alt="Target found, walking decisively toward it">
                 <button class="storyboard-zoom" type="button" aria-label="Zoom key moment 3">🔍</button>
               </div>
-              <span class="frame-time">0:40</span>
-              <div class="frame-description">The selected waypoint is executed by the humanoid controller.</div>
-            </div>
-            <div class="storyboard-frame" data-target-video="teaser-video" data-youtube-id="MS10ASQFA18" data-time="58">
-              <div class="storyboard-image">
-                <img src="https://img.youtube.com/vi/MS10ASQFA18/hqdefault.jpg" alt="Human G1 demo target approach">
-                <button class="storyboard-zoom" type="button" aria-label="Zoom key moment 4">🔍</button>
-              </div>
-              <span class="frame-time">0:58</span>
-              <div class="frame-description">Later exploration narrows the search toward the target region.</div>
+              <span class="frame-time">0:24</span>
+              <div class="frame-description">The target is found: exploration ends and the agent commits, walking decisively toward the object.</div>
             </div>
           </div>
         </div>
@@ -112,33 +105,77 @@
     <div class="container">
       <div class="section-heading has-text-centered">
         <div class="section-kicker">Overview</div>
-        <h2 class="title is-3">From human demonstrations to BEV-grounded waypoint decisions.</h2>
+        <h2 class="title is-3">Learning human-like object search in a unified BEV decision space.</h2>
+        <p class="section-lead">
+          ObjectNav asks a robot to find an unseen target in an unknown home under partial observability. The core difficulty is deciding <em>where to explore next</em> over a long horizon &mdash; long before the target is ever observed.
+        </p>
       </div>
 
       <div class="overview-grid">
         <div class="overview-card">
           <span class="story-tag">Why</span>
-          <h3>Maps lose details, RGB policies lose space</h3>
-          <p>Map-based methods compress visual observations into sparse map labels, while RGB-only policies preserve appearance but struggle with long-horizon search.</p>
+          <h3>VLM policies lose either space or visual detail</h3>
+          <p>First-person RGB policies keep appearance but discard spatial structure and act reactively over short horizons; text map summaries keep layout but flatten geometry and fine-grained visual cues. Both drift into repetitive search &mdash; turning in place, backtracking, and revisiting the same rooms.</p>
         </div>
         <div class="overview-card">
           <span class="story-tag">How</span>
-          <h3>Frontier-collapse supervision</h3>
-          <p>Low-level human demonstrations are converted into high-level BEV waypoint labels, enabling imitation learning without oracle shortest-path supervision.</p>
+          <h3>Recover search intent from human demonstrations</h3>
+          <p>Frontier-based Human-Intent Labeling looks ahead in low-level human trajectories and labels the frontier that best explains the demonstrator's future search direction &mdash; turning raw human actions into high-level BEV waypoint supervision, with no oracle shortest paths.</p>
         </div>
         <div class="overview-card">
           <span class="story-tag">What</span>
-          <h3>Candidate-wise spatial-visual decisions</h3>
-          <p>Frontier and target candidates are compared in one BEV decision space while retaining candidate-specific visual memory and relative geometry.</p>
+          <h3>BEV-grounded spatial-visual candidate policy</h3>
+          <p>A VLM compares frontier and target candidates in one BEV decision space, each grounded by its egocentric visual memory and agent-centric geometry, then emits a reserved candidate-ID waypoint that transfers across embodiments.</p>
         </div>
       </div>
 
       <figure class="method-figure">
-        <img src="./static/images/method-overview.svg" alt="IntentNav method overview diagram">
+        <img src="./static/images/arch-overview.png?v=20260608" alt="IntentNav architecture: frontier-based human-intent labeling and a BEV-grounded spatial-visual candidate policy">
         <figcaption>
-          Frontier-collapse supervision turns human demonstrations into BEV waypoint labels; the policy then compares candidate frontiers and targets before issuing embodiment-agnostic waypoint commands.
+          <strong>IntentNav architecture.</strong>
+          <strong>Left:</strong> human rollouts update a persistent BEV map, and Frontier-based Human-Intent Labeling recovers the intended frontier as candidate-level supervision by looking ahead at how frontiers evolve in the future.
+          <strong>Right:</strong> the VLM fuses the BEV decision space, candidate-aligned egocentric visual memories, and agent-centric geometry, then predicts a reserved candidate-ID token as the next waypoint.
         </figcaption>
       </figure>
+    </div>
+  </section>
+
+  <section class="section approach-section" id="approach">
+    <div class="container">
+      <div class="section-heading has-text-centered">
+        <div class="section-kicker">Key Contributions</div>
+        <h2 class="title is-3">Three ideas that make search human-like and transferable.</h2>
+      </div>
+
+      <div class="contrib-grid">
+        <div class="contrib-card">
+          <span class="contrib-number">1</span>
+          <h3>Frontier-based Human-Intent Labeling</h3>
+          <p>We replay Habitat-Web human ObjectNav demonstrations and convert their low-level actions into candidate-level waypoint labels. When a target is verified we supervise it directly; otherwise we infer intent from how frontiers evolve, labeling the frontier the demonstrator actually committed to.</p>
+          <ul class="contrib-highlights">
+            <li>23,767 human episodes &rarr; 2.36M candidate-level samples</li>
+            <li>No oracle shortest-path supervision</li>
+          </ul>
+        </div>
+        <div class="contrib-card">
+          <span class="contrib-number">2</span>
+          <h3>BEV-Grounded Spatial-Visual Policy</h3>
+          <p>Exploration and target commitment are unified as selection over BEV candidates. Each candidate carries its first-observed egocentric visual memory and an agent-centric geometry feature, and an Intent-Aligned Objective smooths frontier choices by direction while keeping hard commitment to verified targets.</p>
+          <ul class="contrib-highlights">
+            <li>32 reserved candidate-ID tokens &mdash; selection, not free-form text</li>
+            <li>Angular soft target for directionally consistent search</li>
+          </ul>
+        </div>
+        <div class="contrib-card">
+          <span class="contrib-number">3</span>
+          <h3>State-of-the-Art &amp; Zero-Shot Transfer</h3>
+          <p>Trained only on MP3D demonstrations, IntentNav reaches the best SR and SPL among learning-based methods on MP3D, HM3D-v1, and HM3D-v2. The same checkpoint and candidate-level BEV interface transfer with no VLM fine-tuning across three physical robots.</p>
+          <ul class="contrib-highlights">
+            <li>82.2% SR on HM3D-v2 &bull; 70.5% on HM3D-v1</li>
+            <li>Wheeled, Go2 quadruped, G1 humanoid &bull; ~0.8s / decision</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
